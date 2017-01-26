@@ -14,7 +14,6 @@ module Embulk
         def initialize(params: , subscription_key:, api_type: , retry_wait:, read_timeout:)
           Embulk.logger.info("api type => #{api_type}")
 
-          uri_string = "#{ENDPOINT_PREFIX}/#{api_type}"
           uri = URI.parse("#{ENDPOINT_PREFIX}/#{api_type}")
           uri.query = URI.encode_www_form(params)
           @request = Net::HTTP::Post.new(uri.request_uri)
