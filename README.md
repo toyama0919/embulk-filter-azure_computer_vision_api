@@ -1,6 +1,5 @@
 # Azure Computer Vision Api filter plugin for Embulk
 
-TODO: Write short description here and embulk-filter-azure_computer_vision_api.gemspec file.
 
 ## Overview
 
@@ -19,15 +18,14 @@ TODO: Write short description here and embulk-filter-azure_computer_vision_api.g
 ## Example
 
 ```yaml
-filters:
-  - type: azure_translator_api
-    key_names:
-      - english_column
-      - chinese_column2
-    out_key_name_suffix: _translated
+  - type: azure_computer_vision_api
+    api_type: ocr
+    image_path_key_name: image_path
+    out_key_name: image_info
+    # params:
+    #   language: "ja"
+    #   detectOrientation: true
     subscription_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    api_type: Translate
-    to: ja
 ```
 
 ## Build
