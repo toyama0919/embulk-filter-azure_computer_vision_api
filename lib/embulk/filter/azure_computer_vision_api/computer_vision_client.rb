@@ -16,6 +16,7 @@ module Embulk
 
           uri = URI.parse("#{ENDPOINT_PREFIX}/#{api_type}")
           uri.query = URI.encode_www_form(params)
+          @api_type = api_type
           @request = Net::HTTP::Post.new(uri.request_uri)
           @request['Ocp-Apim-Subscription-Key'] = subscription_key
           @http = Net::HTTP.new(uri.host, uri.port)
@@ -30,13 +31,12 @@ module Embulk
           @request['Content-Type'] = content_type
           @request.body = body
 
-          Embulk.logger.info("processing => #{image_path}")
+          Embulk.logger.info("Computer Vision API #{@api_type} processing.. => #{image_path}")
 
           begin
             loop do
               response = @http.start do |http|
                 response_body = http.request(@request).body
-
                 Embulk.logger.debug("response body => #{response_body}")
                 JSON.parse(response_body)
               end
