@@ -32,20 +32,26 @@ module Embulk
 
           Embulk.logger.info("processing => #{image_path}")
 
-          loop do
-            response = @http.start do |http|
-              response_body = http.request(@request).body
-              JSON.parse(response_body)
-            end
-            if response.key?('statusCode')
-              if response['statusCode'] == 429
-                sec = response['message'].match(RETRY_WAIT_REGEXP)
+          begin
+            loop do
+              response = @http.start do |http|
+                response_body = http.request(@request).body
+
+                Embulk.logger.debug("response body => #{response_body}")
+                JSON.parse(response_body)
               end
-              Embulk.logger.warn("response error => #{response}")
-              sleep (sec ? sec[1].to_i + 1 : @retry_wait)
-            else
-              return response
+              if response.key?('statusCode')
+                if response['statusCode'] == 429
+                  sec = response['message'].match(RETRY_WAIT_REGEXP)
+                end
+                Embulk.logger.warn("response error => #{response}")
+                sleep (sec ? sec[1].to_i + 1 : @retry_wait)
+              else
+                return response
+              end
             end
+          rescue => e
+            Embulk.logger.error "\n#{e.message}\n#{e.backtrace.join("\n")}"
           end
         end
 
