@@ -58,7 +58,8 @@ module Embulk
         private
         def get_content_type_and_body(image_path)
           if image_path =~ /https?\:\/\//
-            return 'application/json', { url: image_path || '' }.to_json
+            content = Net::HTTP.get_response(URI.parse(image_path)).body rescue ''
+            return 'application/octet-stream', content
           else
             content = File.read(image_path) rescue ''
             return 'application/octet-stream', content
