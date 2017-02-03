@@ -2,7 +2,6 @@ require "json"
 require "net/http"
 require "uri"
 require "pp"
-require "openssl"
 
 module Embulk
   module Filter
@@ -22,7 +21,6 @@ module Embulk
           @http = Net::HTTP.new(uri.host, uri.port)
           @http.read_timeout = read_timeout
           @http.use_ssl = true
-          @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           @retry_wait = retry_wait
         end
 
