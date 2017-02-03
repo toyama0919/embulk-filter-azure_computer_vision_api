@@ -1,7 +1,7 @@
 require "json"
 require "net/http"
-require "uri"
 require "pp"
+require 'addressable/uri'
 
 module Embulk
   module Filter
@@ -56,12 +56,14 @@ module Embulk
         private
         def get_content_type_and_body(image_path)
           if image_path =~ /https?\:\/\//
-            content = Net::HTTP.get_response(URI.parse(image_path)).body rescue ''
-            return 'application/octet-stream', content
+            response = Net::HTTP.get_response(Addressable::URI.parse(image_path))
+            return 'application/octet-stream', response.body
           else
-            content = File.read(image_path) rescue ''
+            content = File.read(image_path)
             return 'application/octet-stream', content
           end
+        rescue
+          ''
         end
       end
     end
