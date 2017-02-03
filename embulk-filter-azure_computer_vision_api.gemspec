@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "embulk-filter-azure_computer_vision_api"
-  spec.version       = "0.1.2"
+  spec.version       = "0.1.3"
   spec.authors       = ["toyama0919"]
   spec.summary       = "Azure Computer Vision Api filter plugin for Embulk"
   spec.description   = "Azure Computer Vision Api"
