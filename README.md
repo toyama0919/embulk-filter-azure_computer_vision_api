@@ -7,13 +7,13 @@
 
 ## Configuration
 
-- **api_type**: api_type(string)
-- **out_key_name**: out_key_name(string)
-- **image_path_key_name**: image_path_key_name(string)
+- **api_type**: api_type(string, required)
+- **out_key_name**: out_key_name(string, required)
+- **image_path_key_name**: image_path_key_name(string, required)
 - **params**: params(hash, default: {})
 - **delay**: delay(integer, default: 0)
 - **retry_wait**: retry_wait(integer, default: 10)
-- **subscription_key**: subscription_key(string)
+- **subscription_key**: subscription_key(string, required)
 
 ## Example
 
