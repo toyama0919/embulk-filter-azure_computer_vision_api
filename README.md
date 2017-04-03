@@ -63,6 +63,11 @@
     subscription_key: {{ env.AZURE_COMPUTER_VISION_SUBSCRIPTION_KEY }}
 ```
 
+## Reference
+[Computer Vision—Image Processing and Analytics \| Microsoft Azure](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
+[Microsoft Cognitive Services \- Documentation](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation)
+[Cognitive Services APIs Reference](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)
+
 ## Build
 
 ```
