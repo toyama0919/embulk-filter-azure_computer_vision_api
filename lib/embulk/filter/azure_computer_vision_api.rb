@@ -1,3 +1,4 @@
+require_relative 'azure_computer_vision_api/constants'
 require_relative 'azure_computer_vision_api/computer_vision_client'
 
 module Embulk

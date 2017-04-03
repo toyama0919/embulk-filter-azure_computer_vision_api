@@ -7,8 +7,6 @@ module Embulk
   module Filter
     class AzureComputerVisionApi < FilterPlugin
       class ComputerVisionClient
-        ENDPOINT_PREFIX = "https://api.projectoxford.ai/vision/v1.0"
-        RETRY_WAIT_REGEXP = /Rate limit is exceeded. Try again in ([\d]+) seconds./
 
         def initialize(params: , subscription_key:, api_type: , retry_wait:, read_timeout:)
           Embulk.logger.info("api type => #{api_type}")
