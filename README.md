@@ -1,5 +1,5 @@
 # Azure Computer Vision Api filter plugin for Embulk
-
+[![Gem Version](https://badge.fury.io/rb/embulk-filter-azure_computer_vision_api.svg)](http://badge.fury.io/rb/embulk-filter-azure_computer_vision_api)
 
 ## Overview
 
